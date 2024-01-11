@@ -15,7 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-=798a&hf%harj%b_vmta2%4@-^ohea)%7=*(#(a01xb*lcezae'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['.pythonanywhere.com',  'localhost', '127.0.0.1',]
 
@@ -164,7 +164,7 @@ CELERY_BROKER_URL = 'amqp://admin:1234@localhost:5672/book_blog'
 
 # Redis settings
 REDIS_HOST = 'localhost'
-REDIS_PORT = 6376
+REDIS_PORT = 6373
 REDIS_DB = 1
 
 ASGI_APPLICATION = 'Config.asgi.application'
