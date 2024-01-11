@@ -1,0 +1,1 @@
+from payment.tasks import payment_completed
