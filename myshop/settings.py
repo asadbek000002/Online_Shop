@@ -169,14 +169,12 @@ REDIS_DB = 1
 
 
 redis_host = os.environ.get('REDIS_HOST', 'localhost')
-
-CHANNEL_LAYERS = {
-    "default": {
-        # This example app uses the Redis channel layer implementation asgi_redis
-        "BACKEND": "asgi_redis.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [(redis_host, 6376)],
-        },
-        "ROUTING": "multichat.routing.channel_routing",
-    },
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',  # Redis server manzili va bazasi
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
 }
