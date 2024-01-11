@@ -165,12 +165,12 @@ REDIS_HOST = 'localhost'
 REDIS_PORT = 6379
 REDIS_DB = 1
 
-CACHES = {
+
+CHANNEL_LAYERS = {
     'default': {
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://127.0.0.1:6379',  # Redis serverning manzili va porti
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-        }
-    }
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('127.0.0.1', 6378)],
+        },
+    },
 }
