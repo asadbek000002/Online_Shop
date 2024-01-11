@@ -17,7 +17,7 @@ SECRET_KEY = 'django-insecure-=798a&hf%harj%b_vmta2%4@-^ohea)%7=*(#(a01xb*lcezae
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.pythonanywhere.com', 'localhost/8009/']
+ALLOWED_HOSTS = ['.pythonanywhere.com',  'localhost', '127.0.0.1',]
 
 
 #HTTPS Protokolni Yoqish
@@ -167,8 +167,7 @@ REDIS_HOST = 'localhost'
 REDIS_PORT = 6376
 REDIS_DB = 1
 
-
-redis_host = os.environ.get('REDIS_HOST', 'localhost')
+ASGI_APPLICATION = 'Config.asgi.application'
 
 
 CHANNEL_LAYERS = {
