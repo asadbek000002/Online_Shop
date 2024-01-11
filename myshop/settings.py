@@ -164,7 +164,7 @@ CELERY_BROKER_URL = 'amqp://admin:1234@localhost:5672/book_blog'
 
 # Redis settings
 REDIS_HOST = 'localhost'
-REDIS_PORT = 6379
+REDIS_PORT = 6376
 REDIS_DB = 1
 
 
