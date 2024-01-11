@@ -17,7 +17,7 @@ SECRET_KEY = 'django-insecure-=798a&hf%harj%b_vmta2%4@-^ohea)%7=*(#(a01xb*lcezae
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.pythonanywhere.com', 'localhost']
+ALLOWED_HOSTS = ['.pythonanywhere.com', 'localhost/8009/']
 
 
 #HTTPS Protokolni Yoqish
@@ -169,12 +169,13 @@ REDIS_DB = 1
 
 
 redis_host = os.environ.get('REDIS_HOST', 'localhost')
-CACHES = {
+
+
+CHANNEL_LAYERS = {
     'default': {
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://127.0.0.1:6379/1',  # Redis server manzili va bazasi
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-        }
-    }
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('127.0.0.1', 6376)],
+        },
+    },
 }
