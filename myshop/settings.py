@@ -164,7 +164,7 @@ CELERY_BROKER_URL = 'amqp://admin:1234@localhost:5672/book_blog'
 
 # Redis settings
 REDIS_HOST = 'localhost'
-REDIS_PORT = 6373
+REDIS_PORT = 6379
 REDIS_DB = 1
 
 ASGI_APPLICATION = 'Config.asgi.application'
@@ -173,7 +173,8 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+            # Redis-serverning manzil va porti
+            "hosts": [('127.0.0.1', 6379)],
         },
     },
 }
