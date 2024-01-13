@@ -15,14 +15,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-=798a&hf%harj%b_vmta2%4@-^ohea)%7=*(#(a01xb*lcezae'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['.pythonanywhere.com',  'localhost', '127.0.0.1',]
+ALLOWED_HOSTS = []
 
 
-#HTTPS Protokolni Yoqish
-SECURE_SSL_REDIRECT = True
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# #HTTPS Protokolni Yoqish
+# SECURE_SSL_REDIRECT = False
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 
@@ -130,6 +130,8 @@ STATIC_ROOT = BASE_DIR / 'static'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -164,27 +166,27 @@ CELERY_BROKER_URL = 'amqp://admin:1234@localhost:5672/book_blog'
 
 # Redis settings
 REDIS_HOST = 'localhost'
-REDIS_PORT = 6373
+REDIS_PORT = 6379
 REDIS_DB = 1
-
-ASGI_APPLICATION = 'Config.asgi.application'
-
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            # Redis-serverning manzil va porti
-            "hosts": [('127.0.0.1', 6373)],
-        },
-    },
-}
-
-CACHES = {
-    'default': {
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://127.0.0.1:6373/1',  # 6379 - Redis-server porti
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-        }
-    }
-}
+#
+# ASGI_APPLICATION = 'Config.asgi.application'
+#
+# CHANNEL_LAYERS = {
+#     "default": {
+#         "BACKEND": "channels_redis.core.RedisChannelLayer",
+#         "CONFIG": {
+#             # Redis-serverning manzil va porti
+#             "hosts": [('127.0.0.1', 6373)],
+#         },
+#     },
+# }
+#
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django_redis.cache.RedisCache',
+#         'LOCATION': 'redis://127.0.0.1:6373/1',  # 6379 - Redis-server porti
+#         'OPTIONS': {
+#             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+#         }
+#     }
+# }
