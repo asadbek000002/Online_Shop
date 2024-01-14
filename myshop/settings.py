@@ -17,7 +17,7 @@ SECRET_KEY = 'django-insecure-=798a&hf%harj%b_vmta2%4@-^ohea)%7=*(#(a01xb*lcezae
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'asad-shop-d9ee143939ca.herokuapp.com/']
+ALLOWED_HOSTS = ['127.0.0.1', 'asad-shop-d9ee143939ca.herokuapp.com']
 
 
 # #HTTPS Protokolni Yoqish
@@ -137,16 +137,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 
 # STATICFILES_DIRS = [BASE_DIR, 'static/']
 
 STATIC_ROOT = BASE_DIR / 'static'
-
-MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
