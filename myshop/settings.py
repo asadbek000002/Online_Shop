@@ -17,7 +17,7 @@ SECRET_KEY = 'django-insecure-=798a&hf%harj%b_vmta2%4@-^ohea)%7=*(#(a01xb*lcezae
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'asad-shop-d9ee143939ca.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # #HTTPS Protokolni Yoqish
