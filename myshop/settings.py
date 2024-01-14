@@ -53,20 +53,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'root': {
-        'handlers': ['console'],
-        'level': 'INFO',  # DEBUG o'rniga INFO ham qo'yishingiz mumkin
-    },
-}
-
 
 ROOT_URLCONF = 'myshop.urls'
 
