@@ -171,25 +171,22 @@ CELERY_BROKER_URL = 'amqp://admin:1234@localhost:5672/book_blog'
 REDIS_HOST = 'localhost'
 REDIS_PORT = 6379
 REDIS_DB = 1
-#
-# ASGI_APPLICATION = 'Config.asgi.application'
-#
-# CHANNEL_LAYERS = {
-#     "default": {
-#         "BACKEND": "channels_redis.core.RedisChannelLayer",
-#         "CONFIG": {
-#             # Redis-serverning manzil va porti
-#             "hosts": [('127.0.0.1', 6373)],
-#         },
-#     },
-# }
-#
-# CACHES = {
-#     'default': {
-#         'BACKEND': 'django_redis.cache.RedisCache',
-#         'LOCATION': 'redis://127.0.0.1:6373/1',  # 6379 - Redis-server porti
-#         'OPTIONS': {
-#             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-#         }
-#     }
-# }
+
+
+
+# redis_url = urlparse.urlparse(os.environ.get('REDISCLOUD_URL'))
+# settings.py
+
+# ...
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://default:CJdGoXtBvYQpe0tk8H000RQPpwSoxzLK@redis-13548.c16.us-east-1-3.ec2.cloud.redislabs.com:13548",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+# ...
