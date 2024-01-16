@@ -2,6 +2,7 @@
 
 from pathlib import Path
 import os
+from urllib.parse import urlparse
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -173,20 +174,14 @@ REDIS_PORT = 6379
 REDIS_DB = 1
 
 
-
-# redis_url = urlparse.urlparse(os.environ.get('REDISCLOUD_URL'))
-# settings.py
-
-# ...
+redis_url = urlparse(os.environ.get('REDISCLOUD_URL'))
 
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://default:CJdGoXtBvYQpe0tk8H000RQPpwSoxzLK@redis-13548.c16.us-east-1-3.ec2.cloud.redislabs.com:13548",
+        "LOCATION": os.environ.get("REDISCLOUD_URL"),
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
     }
 }
-
-# ...
