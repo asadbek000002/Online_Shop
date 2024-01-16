@@ -165,7 +165,7 @@ STRIPE_WEBHOOK_SECRET = 'whsec_751f47157311b0bc0b60532a75331299ebbdba2f4ce51713f
 
 
 #Seleri urli topish uchun
-CELERY_BROKER_URL = 'amqp://admin:1234@localhost:5672/book_blog'
+# CELERY_BROKER_URL = 'amqp://admin:1234@localhost:5672/book_blog'
 
 
 # Redis settings
@@ -174,7 +174,7 @@ REDIS_PORT = 6379
 REDIS_DB = 1
 
 
-redis_url = urlparse(os.environ.get('REDISCLOUD_URL'))
+redis_url = urlparse(os.environ.get('REDISCLOUD_URL', 'redis://localhost:6379'))
 
 CACHES = {
     "default": {
@@ -185,3 +185,7 @@ CACHES = {
         }
     }
 }
+
+# Celery sozlamalari
+CELERY_BROKER_URL = os.environ.get('REDISCLOUD_URL', 'redis://localhost:6379/0')
+CELERY_RESULT_BACKEND = os.environ.get('REDISCLOUD_URL', 'redis://localhost:6379/0')
