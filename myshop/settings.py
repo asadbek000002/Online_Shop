@@ -185,22 +185,27 @@ STRIPE_WEBHOOK_SECRET = 'whsec_751f47157311b0bc0b60532a75331299ebbdba2f4ce51713f
 # settings.py faylida
 
 
-# Heroku'da Redis ishlatish uchun
-# REDIS_URL o'zgaruvchisini qo'shing
-REDIS_URL = os.environ.get('REDIS_URL')
 
 # Boshqa sozlamalar
 
-# Redis sozlamalari
+# Redis settings
+REDIS_URL = os.environ.get('REDIS_URL')
+
+# Celery broker settings
+CELERY_BROKER_URL = f'redis://{REDIS_URL}/0'
+
+# Cache settings
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": REDIS_URL,
+        "LOCATION": CELERY_BROKER_URL,
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+
         }
     }
 }
+
 
 # Heroku konfiguratsiyasini sozlash
 django_heroku.settings(locals())
