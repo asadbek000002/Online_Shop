@@ -169,9 +169,9 @@ CELERY_BROKER_URL = 'rediss://:p69905b5387f281dc17b8f069f55d375d8143580bc4000ec2
 
 
 # Redis settings
-REDIS_HOST = 'localhost'
-REDIS_PORT = 6376
-REDIS_DB = 1
+REDIS_HOST = 'ec2-3-226-149-176.compute-1.amazonaws.com'
+REDIS_PORT = 15560
+REDIS_DB = 0
 
 CACHES = {
     "default": {
