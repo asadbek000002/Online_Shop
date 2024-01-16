@@ -183,13 +183,17 @@ REDIS_DB = 0
 #     }
 # }
 
+import os
 import django_heroku
+
+# Heroku environment variables
+REDIS_URL = os.getenv('REDIS_URL')
 
 # Redis configuration
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "rediss://:p69905b5387f281dc17b8f069f55d375d8143580bc4000ec2ada1921395971831@ec2-3-226-149-176.compute-1.amazonaws.com:15560",
+        "LOCATION": REDIS_URL,
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
