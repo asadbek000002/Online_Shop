@@ -2,7 +2,7 @@
 
 from pathlib import Path
 import os
-from urllib.parse import urlparse
+import django_heroku
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -182,20 +182,25 @@ STRIPE_WEBHOOK_SECRET = 'whsec_751f47157311b0bc0b60532a75331299ebbdba2f4ce51713f
 #         }
 #     }
 # }
+# settings.py faylida
 
-# Redis settings
+
+# Heroku'da Redis ishlatish uchun
+# REDIS_URL o'zgaruvchisini qo'shing
 REDIS_URL = os.environ.get('REDIS_URL')
 
-# Celery broker settings
-CELERY_BROKER_URL = f'redis://{REDIS_URL}/0'
+# Boshqa sozlamalar
 
-# Cache settings
+# Redis sozlamalari
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": CELERY_BROKER_URL,
+        "LOCATION": REDIS_URL,
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
     }
 }
+
+# Heroku konfiguratsiyasini sozlash
+django_heroku.settings(locals())
