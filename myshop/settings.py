@@ -165,18 +165,18 @@ STRIPE_WEBHOOK_SECRET = 'whsec_751f47157311b0bc0b60532a75331299ebbdba2f4ce51713f
 
 
 #Seleri urli topish uchun
-CELERY_BROKER_URL = 'rediss://:p69905b5387f281dc17b8f069f55d375d8143580bc4000ec2ada1921395971831@ec2-3-226-149-176.compute-1.amazonaws.com:15560'
-
+# CELERY_BROKER_URL = 'rediss://:p69905b5387f281dc17b8f069f55d375d8143580bc4000ec2ada1921395971831@ec2-3-226-149-176.compute-1.amazonaws.com:15560'
+REDIS_URL = os.getenv('REDIS_URL')
 
 # Redis settings
-REDIS_HOST = 'ec2-3-226-149-176.compute-1.amazonaws.com'
+REDIS_HOST = 'localhost'
 REDIS_PORT = 15560
 REDIS_DB = 0
 
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": os.environ.get('CELERY_BROKER_URL'),
+        "LOCATION": REDIS_URL,
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
