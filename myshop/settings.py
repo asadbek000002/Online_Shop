@@ -163,22 +163,39 @@ STRIPE_API_VERSION = '2022-08-01'
 
 STRIPE_WEBHOOK_SECRET = 'whsec_751f47157311b0bc0b60532a75331299ebbdba2f4ce51713fe06c0930d0cb217'
 
-
-#Seleri urli topish uchun
-CELERY_BROKER_URL = 'rediss://:p69905b5387f281dc17b8f069f55d375d8143580bc4000ec2ada1921395971831@ec2-3-226-149-176.compute-1.amazonaws.com:15560'
+#
+# #Seleri urli topish uchun
+# CELERY_BROKER_URL = 'rediss://:p69905b5387f281dc17b8f069f55d375d8143580bc4000ec2ada1921395971831@ec2-3-226-149-176.compute-1.amazonaws.com:15560'
 
 
 # Redis settings
 REDIS_HOST = 'localhost'
 REDIS_PORT = 15560
 REDIS_DB = 0
+#
+# CACHES = {
+#     "default": {
+#         "BACKEND": "django_redis.cache.RedisCache",
+#         "LOCATION": os.environ.get('CELERY_BROKER_URL'),
+#         "OPTIONS": {
+#             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+#         }
+#     }
+# }
 
+import django_heroku
+
+# Redis configuration
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": os.environ.get('CELERY_BROKER_URL'),
+        "LOCATION": "rediss://:p69905b5387f281dc17b8f069f55d375d8143580bc4000ec2ada1921395971831@ec2-3-226-149-176.compute-1.amazonaws.com:15560",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
     }
 }
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
+
