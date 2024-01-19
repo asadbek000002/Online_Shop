@@ -176,7 +176,7 @@ REDIS_DB = 1
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": os.environ.get("REDIS_URL", "redis://localhost:6375/1"),
+        "LOCATION": "redis://localhost:6375/1",     #os.environ.get("REDIS_URL", "redis://localhost:6375/1"),
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
