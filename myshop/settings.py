@@ -170,13 +170,13 @@ STRIPE_WEBHOOK_SECRET = 'whsec_751f47157311b0bc0b60532a75331299ebbdba2f4ce51713f
 
 # Redis settings
 REDIS_HOST = 'localhost'
-REDIS_PORT = 6379
+REDIS_PORT = 6375
 REDIS_DB = 1
 
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": os.environ.get("REDIS_URL", "redis://localhost:6379/1"),
+        "LOCATION": os.environ.get("REDIS_URL", "redis://localhost:6375/1"),
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
